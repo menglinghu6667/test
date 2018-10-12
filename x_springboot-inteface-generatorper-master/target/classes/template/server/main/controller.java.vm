@@ -1,0 +1,112 @@
+package ${packageProject}.controller;
+
+
+
+import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.PageInfo;
+import ${packageProject}.domain.entity.${className};
+import ${packageProject}.service.${className}Service;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import java.util.ArrayList;
+import java.util.List;
+
+
+/**
+ * 业务描述：${className}的基本操作接口
+ * Project Name: ${project}
+ * Package Name: ${packageProject}.controller
+ * Author: ${email}
+ * Date: ${datetime}
+ * Copyright (c) 2018 跨越新科技 版权所有
+ */
+@RestController
+@RequestMapping("${classname}")
+@Api(description = "${className}管理")
+public class ${className}Controller {
+
+	@Autowired
+    private ${className}Service ${classname}Service;
+
+    /**
+     * 根据${className}的Id查询机构信息
+     * @param ${pk.attrname}
+     * @return ${className}对象
+     */
+    @GetMapping("/getBy${pk.attrName}/{${pk.attrname}}")
+    @ApiOperation(value = "查询${className}", notes = "根据${className}的id查询机构")
+    @ApiImplicitParam(dataType = "${pk.attrType}", name = "${pk.attrname}", value = "${className}的id", required = true, paramType = "path")
+    public ${className} getBy${pk.attrName}(@PathVariable ${pk.attrType} ${pk.attrname}) {
+        ${className} ${classname} = ${classname}Service.getBy${pk.attrName}(${pk.attrname});
+        return ${classname};
+    }
+
+	/**
+     * 查询所有的${className}
+     * @return 所有${className}的List集合
+     */
+    @GetMapping("/findAll${className}")
+    @ApiOperation(value = "查询所有", notes = "查询所有${className}")
+    public List<${className}> findAll${className}() {
+        List<${className}> ${classname}s = ${classname}Service.findAll${className}();
+        return ${classname}s;
+    }
+
+	 /**
+     * 新增${className}
+     * @param ${classname} 封装的${className}对象信息
+     * @return
+     * @throws Exception
+     */
+    @PostMapping(value = "/save${className}")
+    @ApiOperation(value = "新增${className}", notes = "根据传输一个${className}对象新增${className}")
+    public boolean save${className}(@ApiParam(name = "${className}对象", value = "json格式", required = true) @RequestBody ${className} ${classname}) throws Exception {
+        boolean result = ${classname}Service.save${className}(${classname});
+        return result;
+    }
+	
+	/**
+     * 根据${className}的id删除${className}信息
+     * @param ${pk.attrname} ${className}的Id
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/deleteBy${pk.attrName}/{${pk.attrname}}", method = RequestMethod.DELETE)
+    @ApiOperation(value = "删除${className}", notes = "根据${className}的id删除${className}")
+    public boolean deleteBy${pk.attrName}(@PathVariable ${pk.attrType} ${pk.attrname}) throws Exception {
+        boolean result = ${classname}Service.deleteBy${pk.attrName}(${pk.attrname});
+        return result;
+    }
+	
+	/**
+     * 修改${className}的基本信息
+     * @param ${classname} 修改${className}的信息
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/update${className}", method = RequestMethod.PUT)
+    @ApiOperation(value = "修改${className}内容", notes = "根据${className}对象修改${className}，${className}的不可更改")
+    public boolean update${className}(@ApiParam(name = "${className}对象", value = "json类型", required = true) @RequestBody ${className} ${classname}) throws Exception {
+        boolean result = ${classname}Service.update${className}(${classname});
+        return result;
+    }
+
+	/**
+     * 分页查询所有${className}
+     * @param currentPage 当前页码
+     * @param pageSize  页码大小
+     * @return 分页查询${className}的结果
+     */
+    @GetMapping("findByPage${className}")
+    @ApiOperation(value = "分页查询", notes = "根据页码和页码大小查询${className}")
+    public PageInfo findByPage${className}(@ApiParam(name = "currentPage", value = "当前页码") @RequestParam("currentPage") Integer currentPage, @ApiParam(name = "pageSize", value = "页码大小") @RequestParam("pageSize") Integer pageSize) {
+        PageInfo pageInfo = ${classname}Service.findByPage${className}(currentPage, pageSize);
+        return pageInfo;
+    }
+}

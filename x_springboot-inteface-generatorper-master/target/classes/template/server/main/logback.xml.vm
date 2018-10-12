@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- ch.qos.logback.core.ConsoleAppender 控制台输出 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+            </Pattern>
+        </layout>
+    </appender>
+    <!-- ch.qos.logback.core.rolling.RollingFileAppender 文件日志输出 -->
+    <appender name="ucenter"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>log/ucenter.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>log/ucenter.log.%d{yyyy-MM-dd}
+            </fileNamePattern>
+            <maxHistory>5</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <destination>10.125.211.21:9250</destination>
+        <!-- encoder必须配置,有多种可选 -->
+        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder">
+            <customFields>{"appname":"ucenter"}</customFields>
+        </encoder>
+    </appender>
+
+    <!--具体个性化某个Controller或者某个包下使用指定级别的日志输出-->
+    <logger name="com.kye.map.*" level="INFO"/>
+    <!--精确设置每个包下面的日志  -->
+    <logger name="com" level="INFO">
+        <appender-ref ref="ucenter" />
+        <appender-ref ref="LOGSTASH" />
+        <!--<appender-ref ref="STDOUT" />-->
+    </logger>
+
+
+
+    <!-- 定义了ERROR和INFO级别的日志，分别在STDOUT/mavenProjectlogs输出 -->
+    <root level="ERROR">
+        <appender-ref ref="STDOUT" />
+        <!--     <appender-ref ref="mavenProjectlogs" /> -->
+    </root>
+</configuration>

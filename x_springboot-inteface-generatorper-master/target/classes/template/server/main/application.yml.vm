@@ -1,0 +1,24 @@
+spring.profiles.active: user
+
+---
+spring:
+  profiles: user
+  application:
+    name: ucenter
+  jackson:
+      time-zone: GMT+8
+  datasource:
+    url: jdbc:mysql://${datasourceUrl}?useUnicode=true&characterEncoding=utf8
+    username: ${datasourceUsername}
+    password: ${datasourcePassword}
+    driverClassName: com.mysql.jdbc.Driver
+    maxActive: 10
+    maxIdle: 3
+
+server:
+  port: ${port}
+  servlet:
+    context-path: ${contextPath}
+
+
+

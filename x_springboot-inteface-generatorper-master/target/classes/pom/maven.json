@@ -1,0 +1,22 @@
+[
+  {
+    "name": "shiro-core",
+    "versionNumber": "1.4.0",
+    "mavenSign": "\t\t<dependency>\n\t\t\t<groupId>org.apache.shiro</groupId>\n\t\t\t<artifactId>shiro-core</artifactId>\n\t\t\t<version>1.4.0</version>\n\t\t</dependency>"
+  },
+  {
+    "name": "junit",
+    "versionNumber": "4.12",
+    "mavenSign": "\t\t<dependency>\n\t\t\t<groupId>junit</groupId>\n\t\t\t<artifactId>junit</artifactId>\n\t\t\t<version>4.12</version>\n\t\t\t<scope>test</scope>\n\t\t</dependency>"
+  },
+  {
+    "name": "jackson-core",
+    "versionNumber": "2.9.7",
+    "mavenSign": "\t\t<dependency>\n\t\t\t<groupId>com.fasterxml.jackson.core</groupId>\n\t\t\t<artifactId>jackson-core</artifactId>\n\t\t\t<version>2.9.7</version>\n\t\t</dependency>"
+  },
+  {
+    "name": "commons-lang",
+    "versionNumber": "2.6",
+    "mavenSign": "\t\t<dependency>\n\t\t\t<groupId>commons-lang</groupId>\n\t\t\t<artifactId>commons-lang</artifactId>\n\t\t\t<version>2.6</version>\n\t\t</dependency>"
+  }
+]

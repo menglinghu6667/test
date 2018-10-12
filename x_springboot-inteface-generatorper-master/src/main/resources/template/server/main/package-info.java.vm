@@ -1,0 +1,40 @@
+package ${packageProject}.controller;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+
+
+/**
+ * 业务描述：helloWorld
+ * Project Name: ${project}
+ * Package Name: ${packageProject}.controller
+ * Author: ${email}
+ * Date: ${datetime}
+ * Copyright (c) 2018 跨越新科技 版权所有
+ */
+@RestController
+@RequestMapping("welcome")
+@Api(description = "helloWorld")
+public class HelloWorldController {
+    /**
+     *
+     * @return helloWorld
+     */
+    @GetMapping("/helloWorld")
+    @ApiOperation(value = "helloWorld", notes = "helloWorld")
+    public String helloWorld() {
+        return "helloWorld";
+    }
+
+
+
+
+
+
+
+}

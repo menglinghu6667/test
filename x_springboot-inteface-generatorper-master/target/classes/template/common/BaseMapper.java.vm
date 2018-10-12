@@ -1,0 +1,77 @@
+package ${package}.orm;
+
+
+import javax.management.Query;
+import java.io.Serializable;
+import java.util.List;
+
+/**
+ * 接口：持久化通用操作基类
+ * @param <T>
+ * @param <PK>
+ */
+public interface BaseMapper<T, PK extends Serializable> {
+    /**
+     * 批量删除
+     * @param array
+     */
+    void deleteBatch(PK[] array);
+	
+    /**
+     * 新增
+     * @param entity
+     */
+    void save(T entity);
+	
+    /**
+     * 更新
+     * @param entity
+     */
+    void update(T entity);
+	
+    /**
+     * 删除
+     * @param pk
+     */
+    void delete(PK pk);
+	
+    /**
+     * 根据主键取当前泛型唯一对象
+     *
+     * @param pk 主键
+     * @return 对象
+     */
+    T get(final PK pk);
+
+    /**
+     * 根据条件取当前泛型唯一对象
+     *
+     * @param object 条件参数对象
+     * @return 对象
+     */
+    T getUnique(final Object object);
+
+    /**
+     * 取当前泛型对象所有数据
+     *
+     * @return 对象集合
+     */
+    List<T> findAll();
+
+    /**
+     * 根据条件取当前泛型对象集合
+     *
+     * @param object 条件参数对象
+     * @return 泛型对象集合
+     */
+    List<T> find(final Query object);
+	
+    /**
+     * 判断对象的属性值在数据库内是否唯一.
+     * 在修改对象的情景下,如果属性新修改的值(value)等于属性原来的值(orgValue)则不作比较.
+     *  newValue 新属性值
+     *  oldValue 旧属性值
+     * @return 数据库中与新属性值相同属性值的个数
+     */
+    public int isPropertyUnique(final Object object);
+}

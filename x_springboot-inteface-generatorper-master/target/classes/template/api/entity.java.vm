@@ -1,0 +1,37 @@
+package ${packageProject}.domain.entity;
+
+import java.io.Serializable;
+import com.alibaba.fastjson.JSON;
+import java.util.Date;
+import java.util.List;
+import java.math.BigDecimal;
+
+ /**
+ * 业务描述：${className}的实体类对象
+ * Project Name: ${project}
+ * Package Name: ${packageProject}.domain.entity
+ * Author: ${email}
+ * Date: ${datetime}
+ * Copyright (c) 2018 跨越新科技 版权所有
+ */
+public class ${className} implements Serializable {
+	#foreach ($column in $columns)
+	//$column.comments
+	private $column.attrType $column.attrname;
+	#end
+
+	#foreach ($column in $columns)
+	/**
+	 * 设置：${column.comments}
+	 */
+	public void set${column.attrName}($column.attrType $column.attrname) {
+		this.$column.attrname = $column.attrname;
+	}
+	/**
+	 * 获取：${column.comments}
+	 */
+	public $column.attrType get${column.attrName}() {
+		return $column.attrname;
+	}
+	#end
+}

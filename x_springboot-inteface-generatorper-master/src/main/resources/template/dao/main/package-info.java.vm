@@ -1,0 +1,10 @@
+package ${packageProject}.domain.mappers;
+
+/**
+ * 业务描述：mapper接口
+ * Project Name: ${project}
+ * Package Name: ${packageProject}.domain.mappers
+ * Author: ${email}
+ * Date: ${datetime}
+ * Copyright (c) 2018 跨越新科技 版权所有
+ */

@@ -1,0 +1,9 @@
+package ${packageProject}.domain.entity;
+/**
+ * 业务描述：实体类对象
+ * Project Name: ${project}
+ * Package Name: ${packageProject}.domain.entity
+ * Author: ${email}
+ * Date: ${datetime}
+ * Copyright (c) 2018 跨越新科技 版权所有
+ */

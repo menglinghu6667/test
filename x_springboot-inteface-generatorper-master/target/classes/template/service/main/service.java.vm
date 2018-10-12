@@ -1,0 +1,28 @@
+package ${packageProject}.service;
+
+import com.github.pagehelper.PageInfo;
+import ${packageProject}.domain.entity.${className};
+import java.util.List;
+
+ /**
+ * 业务描述：${className}的基本业务接口
+ * Project Name: ${project}
+ * Package Name: ${packageProject}.service
+ * Author: ${email}
+ * Date: ${datetime}
+ * Copyright (c) 2018 跨越新科技 版权所有
+ */
+public interface ${className}Service {
+
+	${className} getBy${pk.attrName}(${pk.attrType} ${pk.attrname});
+	
+	List<${className}> findAll${className}();
+	
+	boolean update${className}(${className} ${classname}) throws Exception;
+
+	boolean save${className}(${className} ${classname}) throws Exception;
+	
+	boolean deleteBy${pk.attrName}(${pk.attrType} ${pk.attrname}) throws Exception;
+	
+	PageInfo findByPage${className}(int currentPage, int pageSize);
+}

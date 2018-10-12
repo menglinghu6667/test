@@ -1,0 +1,15 @@
+package ${packageProject}.domain.mappers;
+
+import ${packageProject}.domain.entity.${className};
+import ${package}.orm.BaseMapper;
+
+ /**
+ * 业务描述：${className}的mapper接口
+ * Project Name: ${project}
+ * Package Name: ${packageProject}.domain.mappers
+ * Author: ${email}
+ * Date: ${datetime}
+ * Copyright (c) 2018 跨越新科技 版权所有
+ */
+public interface ${className}Mapper extends BaseMapper<${className} , ${pk.attrType}> {
+}

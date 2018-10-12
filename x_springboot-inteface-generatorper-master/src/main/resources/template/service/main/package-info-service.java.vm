@@ -1,0 +1,10 @@
+package ${packageProject}.service;
+
+/**
+ * 业务描述：基本业务接口
+ * Project Name: ${project}
+ * Package Name: ${packageProject}.service
+ * Author: ${email}
+ * Date: ${datetime}
+ * Copyright (c) 2018 跨越新科技 版权所有
+ */

@@ -1,0 +1,57 @@
+package ${package}.utils;
+
+import java.security.SecureRandom;
+import java.util.UUID;
+
+public class IdentifiesUtils {
+
+    public static void main(String[] args) {
+        System.out.println(UUID.randomUUID().toString());
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < 30; i++) {
+                    System.out.println("========" + Thread.currentThread().getName() + "=" + i);
+                    System.out.println(getUuid64bit());
+                    System.out.println("========");
+                }
+            }
+        }).start();
+    }
+
+    /**
+     * 获取IdentifiesUtils
+     *
+     * @return
+     */
+    public static String getUuid() {
+        return UUID.randomUUID().toString().replace("-", "").toLowerCase();
+    }
+
+    public static String getUuid64bit() {
+        SecureRandom ng = Holder.numberGenerator;
+
+        byte[] randomBytes = new byte[32];
+        ng.nextBytes(randomBytes);
+        randomBytes[12] &= 0x0f;  /* clear version        */
+        randomBytes[12] |= 0x40;  /* set to version 4     */
+        randomBytes[16] &= 0x3f;  /* clear variant        */
+        randomBytes[16] |= 0x80;  /* set to IETF variant  */
+        // 字节数组转换为 十六进制 数
+        StringBuffer hexString = new StringBuffer();
+        for (int i = 0; i < randomBytes.length; i++) {
+            String shaHex = Integer.toHexString(randomBytes[i] & 0xFF);
+            if (shaHex.length() < 2) {
+                hexString.append(0);
+            }
+            hexString.append(shaHex);
+        }
+
+        return hexString.toString();
+    }
+
+    private static class Holder {
+        static final SecureRandom numberGenerator = new SecureRandom();
+    }
+}

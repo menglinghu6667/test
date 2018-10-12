@@ -1,0 +1,48 @@
+package ${package}.exception;
+
+public enum ErrorCode {
+
+    parm_exception(9000, "参数异常"),
+    parm_id_isnull(9100, "id不能为空！"),
+    parm_id_isitself(9101, "不能删除当前还在使用的角色!"),
+    parm_id_issuper(9102, "不能删除此数据！"),
+    parm_id_isreadonly(9103, "不能修改此数据！"),
+    parm_http_timeout(9200, "http请求超时!"),
+    parm_object_isnull(9300, "对象不能为空！"),
+    parm_parent_id_isnull(9400, "parent_id不能为空！"),
+    parm_parent_id_isexist(9501, "用户的头像已经存在请使用更新方法！"),
+    parm_headImage_isnull(9500,"用户头像为空"),
+    parm_failure(9600,"添加失败"),
+
+
+    LOGIN_USERPASS_ERROR(9600, "用户名密码错误！"),   //9600 - 9650为登陆错误编码
+    LOGIN_USERPASS_ISNOTNULL(9610, "用户名不能为空！"),
+    LOGIN_USERNOT_EXISTENCE(9601, "用户信息不存在！"),
+    AUTHEN_USERNOT_EXISTENCE(9602, "用户认证信不存在！");
+
+
+
+    ErrorCode(int code, String message){
+        this.code = code;
+        this.message = message;
+    }
+
+    private int code;
+    private String message;
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+}
